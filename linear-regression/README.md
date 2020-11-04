@@ -58,7 +58,12 @@ If the graph is saved, it will be saved to the same directory as the data which 
 
 ## Testing the ```linear_regression()``` function: 
 
-(1) Simply navigate to the ```tests``` directory, open```test_linear_regression_functions.py``` and run the file.
+(1) Simply navigate to the ```tests``` directory, open```test_linear_regression_functions.py``` and run the ```.py``` file.
+
+The unit testing checks to see if: 
+- The data is read in correctly. 
+- The value of 'm' is correctly calculated when using test data. 
+- The value of 'c' is correctly calculated when using test data. 
 
 If there are errors, then the code will print assertion errors explaining what went wrong.  
 
