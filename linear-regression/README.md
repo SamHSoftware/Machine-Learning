@@ -54,4 +54,12 @@ The code will then output/save the following style of graph, depending on the in
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/linear-regression/img/output_graph.png?raw=true" alt="montage of filter effects" width="500"/>
 
- 
+If the graph is saved, it will be saved to the same directory as the data which you originally selected. 
+
+## Testing the ```linear_regression()``` function: 
+
+(1) Simply navigate to the ```tests``` directory, open```test_linear_regression_functions.py``` and run the file.
+
+If there are errors, then the code will print assertion errors explaining what went wrong.  
+
+If there were no errors, then a message confirming this will be printed. 
