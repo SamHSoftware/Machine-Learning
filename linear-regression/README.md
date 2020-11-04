@@ -36,3 +36,19 @@ file_path = file_selection_dialog()
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/linear-regression/img/File%20selection.PNG?raw=true" alt="file selection GUI" width="500"/>
 
 You can find the example data set within [this folder](https://github.com/SamHSoftware/Machine-Learning/tree/main/linear-regression/data). The first column of the data is considered to be the X data. The second column is considered to be the Y data. 
+
+The data that you need to input must be of two columns, and must be stored within a .csv file.
+
+(4) Upon loading in your data, you may use the following code to calculate accurate values of 'm' and 'c', whilst also saving a graph of the data with the new line of best fit. 
+```
+# A function to compare the effects of different image filters.
+# Function inputs args 1: file_path --> Input as string. The file path for the data in question.
+# Function inputs args 2: plot_images --> Set to True or False. Wehn True, prints training data with regression line to console.
+# Function inputs args 3: save_plot --> Set to True or False. When True, saves training data to file_path folder.
+# Function output 1: The coefficient of gradient ('m'). 
+# Function output 2: The y intercept ('c'). 
+m, c = linear_regression(file_path, plot_images=True, save_plot=True)
+```
+
+
+ 
