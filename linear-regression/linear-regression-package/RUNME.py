@@ -1,7 +1,7 @@
 # Import the necessary packages.
 from linear_regression_functions import *
 
-# A function to allow the user to select the image they wish to analyse. 
+# A function to allow the user to select the data they wish to analyse. 
 # Function input args: none. 
 # Function output 1: The file path of the file in question. 
 file_path = file_selection_dialog()
