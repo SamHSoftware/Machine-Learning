@@ -1,0 +1,22 @@
+from setuptools import setup 
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setup(
+    name="comparing-filters", # Replace with your own username
+    version="0.0.1",
+    author="Samuel Huguet",
+    author_email="samhuguet1@gmail.com",
+    description="A small example package to compare different types of image filtering their effects upon Otsu segmentation",
+    py_modules=["otsu_segmentation_functions"],
+    package_dir={'':'src'},
+    url="https://github.com/pypa/sampleproject",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.7',
+)
