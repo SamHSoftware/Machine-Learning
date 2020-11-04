@@ -50,5 +50,8 @@ The data that you need to input must be of two columns, and must be stored withi
 m, c = linear_regression(file_path, plot_images=True, save_plot=True)
 ```
 
+The code will then output/save the following style of graph, depending on the input arguments you choose. 
+
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/linear-regression/img/output_graph.png?raw=true" alt="montage of filter effects" width="500"/>
 
  
