@@ -32,6 +32,7 @@ from linear_regression_functions import *
 file_path = file_selection_dialog()
 ```
 ... a GUI will appear (see the image below), within which, the user should select the 2-D data set for which they wish to calculate a linear line of best fit. 
+
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/linear-regression/img/File%20selection.PNG?raw=true" alt="file selection GUI" width="500"/>
 
 You can find the example data set within [this folder](https://github.com/SamHSoftware/Machine-Learning/tree/main/linear-regression/data). The first column of the data is considered to be the X data. The second column is considered to be the Y data. 
