@@ -39,8 +39,8 @@ def linear_regression(file_path, plot_images, save_plot):
     for i in range(iterations): 
         predicted_values = m*X + c  # The current predicted value of Y
         
-        new_m = (2/n) * sum(X * (predicted_values - Y))  
-        new_c = (2/n) * sum(predicted_values - Y)
+        new_m = (1/n) * sum(X * (predicted_values - Y))  
+        new_c = (1/n) * sum(predicted_values - Y)
         
         # Here, we update the values of m and c. It is important to perform this update after the derivatives of *both* have been taken. 
         m = m - a * new_m  # Update m.
