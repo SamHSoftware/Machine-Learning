@@ -97,6 +97,8 @@ def loss_graph(num_epochs, loss_array, save_plot, display_plot):
 # Function inputs args 3: save_plot --> Set to True or False. When True, saves graphs to file_path folder.
 # Function output 1: The trained multivariate linear regression model. The model exects an input tensor of dtype float32.
 # Function output 1: The weights and biases for the multivariate linear regression model, ordered as the bias, then w1, w2, ...wn for features x1, x2, ... xn.
+# Function output 3: RMSE between test data and truth data. 
+# Function output 4: R2 between test data and truth data. 
 def MV_linear_regression(file_path, display_plot, save_plot): 
 
     ##### (1) Load and prepare data. 
@@ -198,4 +200,4 @@ def MV_linear_regression(file_path, display_plot, save_plot):
     y_intercept = y_intercept.data.detach().numpy()
     output = np.append(y_intercept, coefficients)
     
-    return MVLR_model, output 
+    return MVLR_model, output, RMSE, R2
