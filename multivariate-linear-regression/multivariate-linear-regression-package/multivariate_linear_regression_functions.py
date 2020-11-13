@@ -11,6 +11,7 @@ import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import r2_score
+from math import sqrt
 
 # A function to allow the user to select the image they wish to analyse. 
 # Function inputs args: None. 
