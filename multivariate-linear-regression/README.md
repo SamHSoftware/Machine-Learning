@@ -64,3 +64,4 @@ The second graph shows the MSE per epoch:
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/multivariate-linear-regression/img/MV_linear_regression_data_MSE_loss.png?raw=true" alt="file selection GUI" width="500"/>  
 
+If the graph is saved, it will be saved to the same directory as the data which you originally selected.
