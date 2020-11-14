@@ -93,15 +93,6 @@ def loss_graph(num_epochs, loss_array, save_plot, display_plot):
     else:
         plt.show()   
 
-# Function inputs args 1: file_path --> Input as string. The file path for the data in question.
-# Function inputs args 2: display_plot --> Set to True or False. When true, displays the graphs. 
-# Function inputs args 3: save_plot --> Set to True or False. When True, saves graphs to file_path folder.
-# Function output 1: The trained multivariate linear regression model. The model exects an input tensor of dtype float32.
-# Function output 1: The weights and biases for the multivariate linear regression model, ordered as the bias, then w1, w2, ...wn for features x1, x2, ... xn.
-# Function output 3: RMSE between test data and truth data. 
-# Function output 4: R2 between test data and truth data. 
-def MV_linear_regression(file_path, display_plot, save_plot): 
-
     ##### (1) Load and prepare data. 
     data = read_csv(file_path)
     
@@ -140,10 +131,19 @@ def MV_linear_regression(file_path, display_plot, save_plot):
         
         def __init__(self, in_features, out_features):
             super().__init__() # We use 'super()' in the constructor pass in parameters from the parent class.
-            self.linear = nn.Linear(in_features, out_features) # Create an object of type linear. 
+            
+            # Here, were defining a linear function which maps data from an in_features-dimensional space to an out_features-dimensional space. 
+            # To move between these spaces, we apply a weight matrix to the in_features-dimensional tensor.
+            # The weight matrix is out_features - by - out_features in size. 
+            # The weight matrix is stored in the PyTorch linear layer class.  
+            self.linear = nn.Linear(in_features, out_features) # Within the constructor, we define a layer as a class attribute. 
         
-        # The forward function allows us to create a prediction.
+        # Forward propogation: The process of transforming an input tensor to an output tensor (our prediction).
+        # The forward function passes the input tensor through our model in the forward direction. This is called forward propogation. 
+        # Here, our function accepts a tensor as an input, then returns another tensor as an output.
         def forward(self, x): 
+            # I think that by using forward, e run through all the layers specified in the constructor. 
+            # So for this module, we pass our tensor into the linear layer. 
             return self.linear(x)
     
     # Create an instance of our model. 
