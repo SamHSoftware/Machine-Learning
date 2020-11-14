@@ -14,7 +14,7 @@ E-mail: samhuguet1@gmail.com
 
 ## Here's how to unit test the package before using it: 
 
-(1) Run the ```multivariate_linear_regression_functions.py``` file.  
+(1) Run the ```test_multivariate_linear_regression_functions.py``` file.  
 
 This code will automatically check to see if the Pytorch model outputs the expected weights and biases, RMSE and R<sup>2</sup> value. If an error is detected, the code will notify you of the error and will give a description of what has gone wrong. If no errors are detected, then the code will print a statement confirming this, and the rest of the package will be good to run. 
 
@@ -36,11 +36,9 @@ from multivariate_linear_regression_functions import *
 # Function output 1: The file path of the image in question. 
 file_path = file_selection_dialog()
 ```
-... a GUI will appear (see the image below), within which, the user should select the 2-D data set for which they wish to calculate a linear line of best fit. 
+... a GUI will appear (see the image below), within which, the user should select the data set which the code is to handle.
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/multivariate-linear-regression/img/File%20selection.PNG?raw=true" alt="file selection GUI" width="500"/>
 
-You can find the example data set within [this folder](https://github.com/SamHSoftware/Machine-Learning/tree/main/linear-regression/data). The first column of the data is considered to be the X data. The second column is considered to be the Y data. 
-
-The data that you need to input must be of two columns, and must be stored within a .csv file.
+You can find the example data set within [this folder](https://github.com/SamHSoftware/Machine-Learning/blob/main/multivariate-linear-regression/data/MV_linear_regression_data.csv). The contents of the .csv file need to be organised in the following manner: The first column must be 'truth' values, which we eventually want to learn how to predict. Each successive column must contain the training data, which can be used to train our models and make predictions. Here is an example. If we wanted to predict house prices, then the house prices would go in column 1. If we were using 'floor space' and 'number of rooms' as predictors for house price, then the 'floor space' and 'number of rooms' data would need to reside in columns 2 and 3 respectivly. If you need to use more than 2 predictors, thats fine, just add each new predictor into a new column. The code will recognise their presence and use them for training. 
 
