@@ -30,7 +30,7 @@ def file_selection_dialog():
 # Function inputs arg 3: test --> Array of size 1xn. The test values to compare against those outputted by the model. 
 # Function inputs arg 4: save_plot --> True or Flase. When true, saves plot to data directory.  
 # Function inputs arg 5: display_plot --> True or Flase. When true, displays the plot. 
-# Function output: Graph with the mean square error value per epoch. 
+# Function output: Graph with a comparison between the original test values and their counterparts predicted by the model.  
 def connectpoints_graph(file_path, predictions, test, save_plot, display_plot):
     
     # Get the number of rows. 
@@ -73,7 +73,7 @@ def connectpoints_graph(file_path, predictions, test, save_plot, display_plot):
 # Function inputs arg 3: loss_array --> Array of size 1 x num_epochs. This array contains the calculated vales of MSE made when refining the model with SGD. 
 # Function inputs arg 4: save_plot --> True or Flase. When true, saves plot to data directory.  
 # Function inputs arg 5: display_plot --> True or Flase. When true, displays the plot. 
-# Function output: Graph with a comparison between the original test values and their counterparts predicted by the model. 
+# Function output: Graph with the MSE per epoch.
 def loss_graph(file_path, num_epochs, loss_array, save_plot, display_plot):
     
     # Plot the MSE calculated loss per epoch. 
