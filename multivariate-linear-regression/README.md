@@ -17,3 +17,30 @@ E-mail: samhuguet1@gmail.com
 (1) Run the ```multivariate_linear_regression_functions.py``` file.  
 
 This code will automatically check to see if the Pytorch model outputs the expected weights and biases, RMSE and R<sup>2</sup> value. If an error is detected, the code will notify you of the error and will give a description of what has gone wrong. If no errors are detected, then the code will print a statement confirming this, and the rest of the package will be good to run. 
+
+## How to use the ```RUNME.py``` file and use the package: 
+
+(1) Open the ```RUNME.py``` file. 
+
+(2) Within the ```RUNME.py``` file, first load in the module functions with the following code:
+
+```
+# Import the necessary packages.
+from multivariate_linear_regression_functions import *
+```
+
+(3) Then, with the following function...
+```
+# A function to allow the user to select the image they wish to analyse. 
+# Function input args: none. 
+# Function output 1: The file path of the image in question. 
+file_path = file_selection_dialog()
+```
+... a GUI will appear (see the image below), within which, the user should select the 2-D data set for which they wish to calculate a linear line of best fit. 
+
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/multivariate-linear-regression/img/File%20selection.PNG?raw=true" alt="file selection GUI" width="500"/>
+
+You can find the example data set within [this folder](https://github.com/SamHSoftware/Machine-Learning/tree/main/linear-regression/data). The first column of the data is considered to be the X data. The second column is considered to be the Y data. 
+
+The data that you need to input must be of two columns, and must be stored within a .csv file.
+
