@@ -47,7 +47,7 @@ The data that you need to input must be of two columns, and must be stored withi
 # Function inputs args 3: save_plot --> Set to True or False. When True, saves training data to file_path folder.
 # Function output 1: The coefficient of gradient ('m'). 
 # Function output 2: The y intercept ('c'). 
-m, c = linear_regression(file_path, plot_images=True, save_plot=True)
+m, c = linear_regression(file_path, plot_images, save_plot)
 ```
 
 The code will then output/save the following style of graph, depending on the input arguments you choose. 
