@@ -25,13 +25,13 @@ def file_selection_dialog():
 
     return file_path
 
-# Function inputs arg 1: predictions --> Array of size 1xn. The predicted values outputted by the model. 
-# Function inputs arg 2: test --> Array of size 1xn. The test values to compare against those outputted by the model. 
-# Function inputs arg 3: save_plot --> True or Flase. When true, saves plot to data directory.  
-# Function inputs arg 4: display_plot --> True or Flase. When true, displays the plot. 
-# Function output 1: The trained multivariate linear regression model. The model exects an input tensor of dtype float32.
-# Function output 1: The weights and biases for the multivariate linear regression model, ordered as the bias, then w1, w2, ...wn for features x1, x2, ... xn.
-def connectpoints_graph(predictions, test, save_plot, display_plot):
+# Function inputs arg 1: file_path --> String. File path to the .csv file wihtin which the data is stored. 
+# Function inputs arg 2: predictions --> Array of size 1xn. The predicted values outputted by the model. 
+# Function inputs arg 3: test --> Array of size 1xn. The test values to compare against those outputted by the model. 
+# Function inputs arg 4: save_plot --> True or Flase. When true, saves plot to data directory.  
+# Function inputs arg 5: display_plot --> True or Flase. When true, displays the plot. 
+# Function output: Graph with the mean square error value per epoch. 
+def connectpoints_graph(file_path, predictions, test, save_plot, display_plot):
     
     # Get the number of rows. 
     rows, _ = predictions.shape
@@ -66,13 +66,15 @@ def connectpoints_graph(predictions, test, save_plot, display_plot):
     if (display_plot == False):
         plt.close()
     else:
-        plt.show()   
-
-# Function inputs arg 1: num_epochs --> The number of iterations over which the model is refined. 
-# Function inputs arg 2: loss_array --> Array of size 1 x num_epochs. This array contains the calculated vales of MSE made when refining the model with SGD. 
-# Function inputs arg 3: save_plot --> True or Flase. When true, saves plot to data directory.  
-# Function inputs arg 4: display_plot --> True or Flase. When true, displays the plot. 
-def loss_graph(num_epochs, loss_array, save_plot, display_plot):
+        plt.show() 
+        
+# Function inputs arg 1: file_path --> String. File path to the .csv file wihtin which the data is stored. 
+# Function inputs arg 2: num_epochs --> The number of iterations over which the model is refined. 
+# Function inputs arg 3: loss_array --> Array of size 1 x num_epochs. This array contains the calculated vales of MSE made when refining the model with SGD. 
+# Function inputs arg 4: save_plot --> True or Flase. When true, saves plot to data directory.  
+# Function inputs arg 5: display_plot --> True or Flase. When true, displays the plot. 
+# Function output: Graph with a comparison between the original test values and their counterparts predicted by the model. 
+def loss_graph(file_path, num_epochs, loss_array, save_plot, display_plot):
     
     # Plot the MSE calculated loss per epoch. 
     y = list(range(0,num_epochs))
@@ -92,6 +94,15 @@ def loss_graph(num_epochs, loss_array, save_plot, display_plot):
         plt.close()
     else:
         plt.show()   
+
+# Function inputs args 1: file_path --> Input as string. The file path for the data in question.
+# Function inputs args 2: display_plot --> Set to True or False. When true, displays the graphs. 
+# Function inputs args 3: save_plot --> Set to True or False. When True, saves graphs to file_path folder.
+# Function output 1: The trained multivariate linear regression model. The model exects an input tensor of dtype float32.
+# Function output 2: The weights and biases for the multivariate linear regression model, ordered as the bias, then w1, w2, ...wn for features x1, x2, ... xn.
+# Function output 3: RMSE between test data and truth data. 
+# Function output 4: R2 between test data and truth data. 
+def MV_linear_regression(file_path, display_plot, save_plot): 
 
     ##### (1) Load and prepare data. 
     data = read_csv(file_path)
@@ -179,23 +190,26 @@ def loss_graph(num_epochs, loss_array, save_plot, display_plot):
     ##### (5) Test the model. 
     rows, cols = X_testing.shape
     
-    # Convert the numpy arrays to tensors. 
+    # Calculate the root mean squaure error between predicted values and truth values. 
     x_test_tensor = torch.from_numpy(X_testing.reshape(rows,cols))
     y_test_tensor = torch.from_numpy(Y_testing.reshape(rows ,1))
     y_pred_tensor = MVLR_model(x_test_tensor)
-    RMSE = sqrt(calc_MSE(y_pred_tensor, y_test_tensor).detach().numpy())
-
+    RMSE = sqrt(calc_MSE(y_pred_tensor, y_test_tensor).detach().numpy()) 
+    
+    # Calculate the R2 value between predicted values and truth values. 
     y_pred = y_pred_tensor.detach().numpy()
     y_test = y_test_tensor.detach().numpy()
-    R2 = r2_score(y_test, y_pred)
+    R2 = r2_score(y_test, y_pred) 
     
     ##### (6) Plot data associated with the model. 
     
-    loss_graph(num_epochs, loss_array, save_plot, display_plot)
+    # Display a graph of the mean square error value per epoch. 
+    loss_graph(file_path, num_epochs, loss_array, save_plot, display_plot)
     
-    connectpoints_graph(y_pred, y_test, save_plot, display_plot)
+    # Display a comparison between the original test values and their counterparts predicted by the model. 
+    connectpoints_graph(file_path, y_pred, y_test, save_plot, display_plot)
     
-    ##### (7) Extract the y_intercept and coefficients calculated by our multuvariate linear regression model.
+    ##### (7) Extract the bias and weights calculated by our multuvariate linear regression model.
     coefficients, y_intercept = MVLR_model.parameters()
     coefficients = coefficients.data.detach().numpy()
     y_intercept = y_intercept.data.detach().numpy()
