@@ -98,7 +98,7 @@ def loss_graph(file_path, num_epochs, loss_array, save_plot, display_plot):
 # Function inputs args 1: file_path --> Input as string. The file path for the data in question.
 # Function inputs args 2: display_plot --> Set to True or False. When true, displays the graphs. 
 # Function inputs args 3: save_plot --> Set to True or False. When True, saves graphs to file_path folder.
-# Function output 1: The trained multivariate linear regression model. The model exects an input tensor of dtype float32.
+# Function output 1: The trained multivariate linear regression model. The model expects an input tensor of dtype float32.
 # Function output 2: The weights and biases for the multivariate linear regression model, ordered as the bias, then w1, w2, ...wn for features x1, x2, ... xn.
 # Function output 3: RMSE between test data and truth data. 
 # Function output 4: R2 between test data and truth data. 
