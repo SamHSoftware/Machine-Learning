@@ -39,7 +39,7 @@ from logistic_classification_functions import *
 model, accuracy, predicted_values, true_values = logistic_classification(plot_images, save_plot)
 ```
 
-... You will be able to predict whether patients have breast cancer or not! The function will also output a graph to shown how the loss dreases with each epoch: 
+... You will be able to predict whether patients have breast cancer or not! The function will also output a graph to shown how the loss decreases with each epoch: 
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/logistic-classification/img/BCE_calculated_loss.png?raw=true" alt="Loss per epoch" width="500"/>  
 
