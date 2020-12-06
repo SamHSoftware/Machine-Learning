@@ -13,8 +13,8 @@ def test_logistic_classification():
 
     _, accuracy, y_predicted_classes, y_testing = logistic_classification(False, False)
     
-    # Test 2: See if the values of  RMSE, R2 and the weigths for the linear model fall within the expeted range. 
-    assert accuracy == 0.9680851063829787, "Test 1 failed. The calculated value accuracy for the model(using a fixed data set) was not equal to 0.9680851063829787"
+    # Test 1: See if the validation accuracy is as expected. 
+    assert accuracy == 0.9680851063829787, "Test 1 failed. The calculated value of validation accuracy for the model (using a fixed data set) was not equal to 0.9680851063829787"
 
     print('Tests complete. No errors found.')
     
