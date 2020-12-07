@@ -49,7 +49,7 @@ neural_network(save_plot=True,
 
 In addition, a confusion matrix will be produced to help you discern how well your model functions. You can see an example of the confusion matrix below: 
 
-<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/neural-network-breast-cancer/img/confusion_matrix.png?raw=true" alt="Validation and training loss per epoch" width="500"/>  
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/neural-network-breast-cancer/img/confusion_matrix.png?raw=true" alt="Validation and training loss per epoch" width="300"/>  
 
 If the graphs are saved, it will be saved to the same directory as the data which you originally selected.
 
