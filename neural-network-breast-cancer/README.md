@@ -1,4 +1,4 @@
-# README for project: multivariate-linear-regression
+# README for project: neural-network-breast-cancer
 
 ## Author details: 
 Name: Sam Huguet  
