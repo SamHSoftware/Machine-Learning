@@ -17,9 +17,12 @@ def file_selection_dialog():
 
     return 
 
+# A function to train a linear model, such that it can make predictions given similar data.
 # Function inputs args 1: file_path --> Input as string. The file path for the data in question.
-# Function inputs args 2: plot_images --> Set to True or False. Wehn True, prints training data with regression line to console.
+# Function inputs args 2: plot_images --> Set to True or False. When True, prints training data with regression line to console.
 # Function inputs args 3: save_plot --> Set to True or False. When True, saves training data to file_path folder.
+# Function output 1: The coefficient of gradient ('m'). 
+# Function output 2: The y intercept ('c'). 
 def linear_regression(file_path, plot_images, save_plot): 
     
     # Import the csv file. 
