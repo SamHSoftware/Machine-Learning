@@ -10,6 +10,8 @@ from sklearn.metrics import plot_confusion_matrix
 import torch
 import torch.nn as nn
 import math
+import seaborn as sn
+import pandas as pd 
 
 # Function inputs arg 1: num_epochs --> The number of iterations over which the model is refined. 
 # Function inputs arg 2: training_loss --> Array of size 1 x num_epochs. This array contains the calculated values of BCE loss made when refining the model with SGD. 
@@ -96,26 +98,31 @@ def plot_confusion_matrix(cm,
                           title='Confusion matrix',
                           cmap=plt.cm.Blues):
 
+    # Normalize the data.
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
+    # Create the confusion matrix figure. 
+    df_cm = pd.DataFrame(cm, 
+                         index = [i for i in classes],
+                         columns = [i for i in names])
+    plt.rcParams.update({'font.size': 20})
+    sn.heatmap(df_cm, 
+               annot=True, 
+               cmap=cmap, 
+               cbar=False, 
+               square=True, 
+               linecolor='Black', 
+               linewidths=1)
+    plt.ylabel('True',
+                labelpad=20)
+    plt.xlabel('Predicted',
+               labelpad=20)
+    plt.title(title,
+              pad= 10)
+    ax = plt.gca()
+    ax.set_yticklabels(classes, rotation=90, va="center")
 
-    fmt = '.2f' if normalize else 'd'
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, format(cm[i, j], fmt),
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-
-    plt.tight_layout()
-    plt.ylabel('True')
-    plt.xlabel('Predicted')
-    
     # Save the plot if the user desires it.
     if save_plot:
         current_directory = os.getcwd()
@@ -127,7 +134,7 @@ def plot_confusion_matrix(cm,
     if (display_plot == False):
         plt.close()
     else:
-        plt.show()   
+        plt.show() 
 
 # A function which trains itself to predict whether a cancer is metastatic or not by using a neural netowrk. 
 # Function inputs arg 1: save_plot --> True or False. When True, saves plot to the img folder of the package. 
@@ -250,13 +257,13 @@ def neural_network(save_plot=True,
                display_plot)
     
     # Plot the confusion matrix.
-    confusion = confusion_matrix(y_testing.detach().numpy(), y_predicted_classes.detach().numpy())
+    confusion = confusion_matrix(y_testing.detach().numpy(), y_testing_predicted_classes.detach().numpy())
     names = ('Malignant', 'Benign')
-    plt.figure()
-    plot_confusion_matrix(confusion, 
-                          names, 
-                          save_plot, 
-                          display_plot)
+    plt.figure(figsize = (5,5))
+    confusion_matrix_figure(confusion,
+                            names, 
+                            save_plot, 
+                            display_plot)
     
     ##### (6) Return data. 
     y_predicted_classes = y_predicted_classes.detach().numpy()
