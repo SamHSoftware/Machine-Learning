@@ -3,7 +3,6 @@
 ## Author details: 
 Name: Sam Huguet  
 E-mail: samhuguet1@gmail.com
-git commit . -m "README.md update"
 
 ## Description:   
 - This purpose of this package is to allow a user to fit a linear line of best fit to a 2D data set.
