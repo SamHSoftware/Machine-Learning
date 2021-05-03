@@ -3,3 +3,6 @@ __pycache__/**
 
 .iypnb_checkpoints/**
 **/.ipynb_checkpoints
+
+**/CNN_training_data
+CNN_training_data/**
