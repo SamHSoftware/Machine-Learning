@@ -12,3 +12,11 @@ E-mail: samhuguet1@gmail.com
 
 ## Requirements. 
 (1) Please see the ```requirements.txt``` file (or ```requirements_conda.txt``` file if you are using anaconda) to note the packages (and their respective versions) which are needed for this code to run. 
+
+## How to use this code to classify pixels into different classes. 
+
+(1) First, you will need to present your model with training/testing data (in this case, grayscale images) and the corresponding ground truth data. The ground truth data needs to consist of pre-labelled images, in which each pixel value corresponds to a particular class. I have provided some example data to train and test the model. For the corresponding ground truth images, there are 3 different classes (4 if you count the background): 
+- Pixels of value = 0 ... 'Background'  
+- Pixels of value = 1 ... 'Nuclei'  
+- Pixels of value = 2 ... 'Debris'  
+- Pixels of value = 3 ... 'Nuclear-borders'  
