@@ -21,10 +21,12 @@ E-mail: samhuguet1@gmail.com
 - Pixels of value = 2 ... 'Debris'  
 - Pixels of value = 3 ... 'Nuclear-borders'  
 
-Here is an exampel of a grayscale image: 
+Here is an example of a grayscale image: 
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_raw_image.png?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
 
 Here is the corresponding ground truth labelled image: 
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_ground_truth.jpg?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
+
+I created my ground truth labelled image using the MATLAB app, ```image labeller'''. If you don't have MATLAB, then you can use [apeer.com](https://www.apeer.com/home/), which has a useful image labelling tool.
