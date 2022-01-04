@@ -47,7 +47,7 @@ A GUI will appear (see the example below), with which you should select the fold
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/folder_selection.PNG?raw=true" alt="An example of the GUI used to select training dataset directory" width="500"/>
 
-### (3) Training your model. 
+### (3) Training your model.
 
 Consider the following code: 
 
@@ -57,10 +57,19 @@ The code for the model.
 
 You will notice that there are many input arguments which allow you to specify what kind of ouputs get saved, how many epochs the model trains for, and whether the model saves itself for future bouts of training. These input args are all explained within the code above. 
 
-When the model has trained, it will save a number of different outputs to a new folder (named ```training data_YYYYMMDD_HHMMSS```) within the original training dataset directory. These ouputs contain the following:
+When the model has trained, it will save a number of different image outputs to a new folder (named ```training data_YYYYMMDD_HHMMSS```) within the original training dataset directory. These ouputs contain the following:  
 
 The training and validation loss:
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/loss_graph.png?raw=true" alt="An example of the training and validation loss over several hundred epochs." width="500"/>
 
-the training and validation accuracy. 
+The training and validation accuracy.  
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/accuracy_graph.png?raw=true" alt="An example of the training and validation accuracy over several hundred epochs." width="500"/>
+
+The montage images (one per epoch). These can be indivudually inspected, or they can be (manually) made into a ```.gif``` to show how the model learns with each epoch: 
+ 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png" alt="An example of a gif which you can make to determine how your model trains over time." width="500"/>
+
+
+### (4) Continuing the training for a previous model. 
+
+Lets say you've trained a model for 200 epochs, but need to train it a little more. No problem. Within ```train_CNN``` set ```train_previous_model = True```. When the function is run, you will be prompted to select your training dataset (like last time) and then, you'll be prompted to select your old model (a file with the naming convention, ```multiclass_CNN_YYYYMMDD_HHMMSS.hdf5```). Your model will load in (alongside a ```.csv``` of the training data) and it will continue to train. 
