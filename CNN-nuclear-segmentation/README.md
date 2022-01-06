@@ -67,7 +67,7 @@ The training and validation accuracy:
 
 The montage images (one per epoch). These can be indivudually inspected, or they can be (manually) made into a ```.gif``` to show how the model learns with each epoch. I've taken an excerpt from one such gif (minus the raw image, as that drove up the file size to push to github) to demonstrate this: 
  
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png" alt="An example of a gif which you can make to determine how your model trains over time." width="500"/>
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/animation.gif?raw=true" alt="An example of a gif which you can make to determine how your model trains over time." width="500"/>
 
 
 ### (4) Continuing the training for a previous model. 
