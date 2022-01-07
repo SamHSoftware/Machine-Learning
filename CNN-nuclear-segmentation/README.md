@@ -72,3 +72,15 @@ The montage images (one per epoch). These can be indivudually inspected, or they
 ### (4) Continuing the training for a previous model. 
 
 Lets say you've trained a model for 200 epochs, but need to train it a little more. No problem. Within ```train_CNN``` set ```train_previous_model = True```. When the function is run, you will be prompted to select your training dataset (like last time) and then, you'll be prompted to select your old model (a file with the naming convention, ```multiclass_CNN_YYYYMMDD_HHMMSS.hdf5```). Your model will load in (alongside a ```.csv``` of the training data) and it will continue to train. 
+
+### (5) Use your trained model to classify the pixels of images within a folder. 
+
+Use the following code: 
+
+```
+# Function to use a trained CNN to classify data and save the results in a new directory.
+use_CNN()
+```
+
+Two pop-up GUIs will appear. With the first, select the trained model that you wish to use. With the second, select the directory of images that you need to process. For simplicities sake, I've assumed that the folder of greyscale images, contains only that, images which need to be (and can be) processed by the model.  
+The processed images will appear in a new directory (```classified_images```), which in turn will reside within the folder containing the unprocessed images. 
