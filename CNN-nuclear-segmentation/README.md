@@ -25,7 +25,7 @@ First, you will need to present your model with training/testing data (in this c
 
 Here is an example of a grayscale image: 
 
-<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_raw_image.png?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_raw_image.png?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/> <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_ground_truth.jpg?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
 
 Here is the corresponding ground truth labelled image: 
 
@@ -82,5 +82,5 @@ Use the following code:
 use_CNN()
 ```
 
-Two pop-up GUIs will appear. With the first, select the trained model that you wish to use. With the second, select the directory of images that you need to process. For simplicities sake, I've assumed that the folder of greyscale images, contains only that, images which need to be (and can be) processed by the model.  
+Two pop-up GUIs will appear. With the first, select the trained model that you wish to use. With the second, select the directory of images that you need to process. For simplicities sake, I've assumed that the folder of greyscale images, contains only that, images which need to be (and can be) processed by the model.    
 The processed images will appear in a new directory (```classified_images```), which in turn will reside within the folder containing the unprocessed images. 
