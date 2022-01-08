@@ -23,13 +23,9 @@ First, you will need to present your model with training/testing data (in this c
 - Pixels of value = 2 ... 'Debris'  
 - Pixels of value = 3 ... 'Nuclear-borders'  
 
-Here is an example of a grayscale image: 
+Here is an example of a grayscale image (left) and the corresponding ground truth labelled image (right):
 
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_raw_image.png?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/> <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_ground_truth.jpg?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
-
-Here is the corresponding ground truth labelled image: 
-
-<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_ground_truth.jpg?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
 
 I created my ground truth labelled image using the MATLAB app, ```image labeller```. If you don't have MATLAB, then you can use [apeer.com](https://www.apeer.com/home/), which has a useful image labelling tool.  
 
@@ -59,11 +55,8 @@ You will notice that there are many input arguments which allow you to specify w
 
 When the model has trained, it will save a number of different image outputs to a new folder (named ```training data_YYYYMMDD_HHMMSS```) within the original training dataset directory. These ouputs contain the following:  
 
-The training and validation loss:
-<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/loss_graph.png?raw=true" alt="An example of the training and validation loss over several hundred epochs." width="500"/>
-
-The training and validation accuracy:  
-<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/accuracy_graph.png?raw=true" alt="An example of the training and validation accuracy over several hundred epochs." width="500"/>
+The training and validation loss (left) and the training and validation accuracy (right):
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/loss_graph.png?raw=true" alt="An example of the training and validation loss over several hundred epochs." width="500"/><img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/accuracy_graph.png?raw=true" alt="An example of the training and validation accuracy over several hundred epochs." width="500"/>
 
 The montage images (one per epoch). These can be indivudually inspected, or they can be (manually) made into a ```.gif``` to show how the model learns with each epoch. I've taken an excerpt from one such gif (minus the raw image, as that drove up the file size to push to github) to demonstrate this: 
  
