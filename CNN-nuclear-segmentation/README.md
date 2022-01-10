@@ -25,18 +25,26 @@ First, you will need to present your model with training/testing data (in this c
 
 Here is an example of a grayscale image (left) and the corresponding ground truth labelled image (right):
 
-<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_raw_image.png?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/> <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_ground_truth.jpg?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="500"/>
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_raw_image.png?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="300"/> <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/example_ground_truth.jpg?raw=true" alt="grayscale image of cell nuclei and some surrounding nuclear debris" width="300"/>
 
 I created my ground truth labelled image using the MATLAB app, ```image labeller```. If you don't have MATLAB, then you can use [apeer.com](https://www.apeer.com/home/), which has a useful image labelling tool.  
 
-Within the directory containing the training data, naming conventions are important. For each 'raw' image taken by the microscope (e.g. ```image_1.tif```), there needs to be an equivalent ground truth image with ''\_gtruth' appended onto the end (e.g. ```image_1_gtruth```). 
+Within the directory containing the training data, naming conventions are important. For each 'raw' image taken by the microscope (e.g. ```image_1.tif```), there needs to be an equivalent ground truth image with ''\_gtruth' appended onto the end (e.g. ```image_1_gtruth```).  
+
+Image dimensions are also important. This model expects images to be 2560 pixels wide, and 2160 pixels high. 
 
 ### (2) Selecting the data. 
 
 Open, ```RUNME.py```. Here, you can select and run everything at all once if you're confident. If this is your first time, I'd recommend running the code piece by piece. First run the following code: 
 
 ```
-the code for the directory gui
+# Import the necessary packages.
+from CNN_nuclei_module import *
+
+# A function to allow the user to select the folder contianing the data.
+# Function inputs args: None. 
+# Function output 1: The path of that the folder selected by the user. 
+directory = folder_selection_dialog()
 ```
 
 A GUI will appear (see the example below), with which you should select the folder containing your training dataset. 
@@ -48,7 +56,21 @@ A GUI will appear (see the example below), with which you should select the fold
 Consider the following code: 
 
 ```
-The code for the model. 
+# A function capable of training a CNN to classifying pixels within .tif microscopy images of cell nuclei. 
+# Function input 1: directory [str] --> The directory containing the original and gtruth data. 
+# Function input 2: save_plot [bool] --> When True, graphical data will be saved. 
+# Function input 3: display_plot [bool] --> When True, graphical data will be displayed in the console. 
+# Function input 4: save_model [bool] --> When True, saves the model to the directory containing the training data. 
+# Function input 5: train_previous_model [bool] --> When True, the user is prompted to select a previously trained model, in order to continue it's training.
+# Function input 6: num_epochs [int] --> The number of epochs to train the model.
+# Function input 7: make_movie [bool] --> When true, outputs a movie of the model learning over time. 
+train_CNN(directory,
+          save_plot=True,
+          display_plot=True,
+          save_model=True, 
+          train_previous_model=False,
+          num_epochs=300, 
+          make_the_movie=True)
 ```
 
 You will notice that there are many input arguments which allow you to specify what kind of ouputs get saved, how many epochs the model trains for, and whether the model saves itself for future bouts of training. These input args are all explained within the code above. 
