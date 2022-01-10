@@ -10,8 +10,26 @@ E-mail: samhuguet1@gmail.com
 - Once trained, the CNN can be used to segment (numerically seperated from other pixel classes, e.g. background pixels) microscopy images of cell nuclei. 
 - Alternatively, you could also use this model to classify different objects within images. It's up to you. 
 
+## Package architecture:
+- CNN-nuclear-segmentation:
+    * This is where the main code is stored.
+    * There are module files (these contain the individual functions) and RUNME files (these actually call (use) the functions).
+    * There are .py files for general purpose IDEs, and .ipynb files for JupyterLab.
+- img:
+    * This is where images are stored. These images are used to illustrate this README document.
+- .gitignore:
+    * I use software called 'Git Bash' to sync my local files with those within this GitHub repositry. The .gitignore file contains a list of directories (e.g. text files with project notes), and prevents Git Bash from uplodaing them; I don't want to clutter up this repo!
+- LICENCE.txt:
+    * The licence explaining how this code can be used.
+- README.md:
+    * The file which creates the README for this code.
+- environment.yml:
+    * A file to allow you to re-create this code's environment in conda.
+- requirements.txt:
+    * A file to allow you to re-create this code's environment using pip.
+
 ## Requirements. 
-(1) Please see the ```requirements.txt``` file (or ```requirements_conda.txt``` file if you are using anaconda) to note the packages (and their respective versions) which are needed for this code to run. 
+(1) Please see the ```requirements.txt``` file (or ```environment.yml``` file if you are using conda) to note the packages (and their respective versions) which are needed for this code to run. 
 
 ## How to use this code to classify pixels into different classes. 
 
@@ -80,7 +98,7 @@ When the model has trained, it will save a number of different image outputs to 
 The training and validation loss (left) and the training and validation accuracy (right):
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/loss_graph.png?raw=true" alt="An example of the training and validation loss over several hundred epochs." width="500"/><img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/accuracy_graph.png?raw=true" alt="An example of the training and validation accuracy over several hundred epochs." width="500"/>
 
-The montage images (one per epoch). These can be indivudually inspected, or they can be (manually) made into a ```.gif``` to show how the model learns with each epoch. I've taken an excerpt from one such gif (minus the raw image, as that drove up the file size to push to github) to demonstrate this: 
+The montage images (one per epoch). These can be indivudually inspected, or they can be (manually) made into a ```.gif``` to show how the model learns with each epoch. I've taken an excerpt *(this is **not** the full training process)* from one such gif *(minus the raw image, as that drove up the file size to push to github)* to demonstrate this: 
  
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/CNN-nuclear-segmentation/img/animation.gif?raw=true" alt="An example of a gif which you can make to determine how your model trains over time." width="800"/>
 
