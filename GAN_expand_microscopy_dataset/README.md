@@ -1,4 +1,6 @@
-# README for project: GAN_expand_nuclear_dataset
+# README for project: GAN_expand_nuclear_datase
+
+# *PLEASE NOTE: THIS PROJECT IS NOT YET COMPLETE. TRAINED MODEL EXAMPLES HAVE YET TO BE ADDED*
 
 ## Author details: 
 Name: Sam Huguet  
@@ -100,5 +102,13 @@ Continuing the training for a previous model is simple. Run the ```train_model``
 Use the following code: 
 
 ```
-code
+from GAN_module import * 
+
+# Function to use a trained generator to create our fake data. 
+# Function input arg 1: number_of_images [int] --> The number of images you wish to generate. 
+use_generator(number_of_images)
 ```
+
+The first step is the replacement of ```number_of_images``` with an integer, which will determine the number of fake images you generate. 
+
+The images will be created within a new directory: ```training_data_YYYYMMDD_HHMMSS\\fake_images```. The images will be sclaed between 0 and 255 and will be of equivalent size to the training images. The first image will be called ```image_{0}.png```, with the second being called ```image_{1}.png``` etc.. 
