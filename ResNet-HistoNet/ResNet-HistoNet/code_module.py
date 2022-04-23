@@ -267,11 +267,8 @@ def make_distribution_graph(distribution,
                             date_time,
                             name_tag='training_'):
     
-    # Establsih the bin borders. 
-    bins = [10, 340, 1000, 1700, 2500, 50000]
-    
     # Create the x data labels.
-    x = ('10<x<=340', '340<4=1000', '1000<x<=1700', '1700<x<=2500', '2500<x')
+    x = ('10<x<=340', '340<x<=1000', '1000<x<=1700', '1700<x<=2500', '2500<x')
     
     # Create the x data locations. 
     x_loc = [0, 1, 2, 3, 4]
@@ -285,10 +282,12 @@ def make_distribution_graph(distribution,
     
     # Create the graph.
     fig, axis_1 = plt.subplots()
+    axis_2 = axis_1.twinx()
     axis_1.bar(x, c_distribution, color = "green")
-    axis_1.bar(x, distribution, color = "black")
+    axis_2.bar(x, distribution, color = "black")
     axis_1.set_xlabel('Circle area (pixels)', fontsize = 15, labelpad=10)
     axis_1.set_ylabel('Proportion of circle\nareas', color='black', fontsize = 15, labelpad=10)
+    axis_2.set_ylabel('Cumulative proportion of\ncircle areas', color='green', fontsize = 15, labelpad=10)
     axis_1.set_ylim([0, 1.1])
     axis_1.set_xticks(x_loc)
     axis_1.set_xticklabels(x, rotation=-45, ha='left', rotation_mode='anchor')
@@ -819,4 +818,4 @@ def use_resnet(image_ext = ['.tif', '.png']):
     
     folder_name = f'prediction-data-{date_time}'
     saved_dir = os.path.join(directory, folder_name)
-    print(f'██████████████████████\nPlotting complete.\n\nModel outputs are stored here:\n\n{saved_dir}_{date_time}\n██████████████████████')
+    print(f'██████████████████████\nPlotting complete.\n\nModel outputs are stored here:\n\n{saved_dir}\n██████████████████████')

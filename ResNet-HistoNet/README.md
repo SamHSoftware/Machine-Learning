@@ -80,4 +80,8 @@ It looks like the model might be starting to overfit a little towards the end of
 
 (2) A series of GUIs will appear (similar to those above). Each will have a title asking you to either select the trained model you wish to use (an ```.h5``` file) or the directory of images that you wish to produce graphs for. 
 
-(3) A new directory will be created, called 
+(3) A new directory will be created, called ```prediction-data-YYYYMMDD_hhmmss```. Inside, the distribution graphs will be stored. They will look like this: 
+
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/ResNet-HistoNet/training-data/prediction-data-20220423_155034/circle_area_image_3.png?raw=true" alt="A distribution of circle areas within an image" width="500"/>
+
+The black bars represent the relative distribution, while the green bars represent the cumulative relative distribution. 
