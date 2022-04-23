@@ -15,7 +15,7 @@ from tqdm import trange
 from pandas import read_csv
 from matplotlib.ticker import MaxNLocator
 import keras 
-from keras.layers importInput, BatchNormalization, Activation, Conv2D, Dropout, Add, MaxPooling2D, Dense, Flatten, Lambda
+from keras.layers import Input, BatchNormalization, Activation, Conv2D, Dropout, Add, MaxPooling2D, Dense, Flatten, Lambda
 from tensorflow.keras import regularizers
 import tensorflow as tf 
 from keras.models import Model
@@ -336,10 +336,10 @@ class Custom_Generator(keras.utils.all_utils.Sequence) :
     def __getitem__(self, index):
 
         # Determine which of our indexes we can use.
-        start = index*batch_size
-        if (index+1)*batch_size > self.num_images:
+        start = index*self.batch_size
+        if (index+1)*self.batch_size > self.num_images:
             end = self.num_images
-        end = (index+1)*batch_size
+        end = (index+1)*self.batch_size
         
         indexes = self.indexes[start : end]
         
@@ -380,8 +380,8 @@ def identity_block(input_layer,
                     kernel_size=(1,1), 
                     padding='same', 
                     kernel_initializer='he_normal', 
-                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                    bias_regularizer=regularizers.L2(1e-6),
+                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                    bias_regularizer=regularizers.L2(1e-7),
                     activity_regularizer=regularizers.L2(1e-7))(input_layer_2)
     batchNorm_1 = BatchNormalization(axis=3)(conv_1)
     relu_1 = Activation('relu')(batchNorm_1)
@@ -391,8 +391,8 @@ def identity_block(input_layer,
                      kernel_size=(1,1), 
                      padding='same', 
                      kernel_initializer='he_normal',  
-                     kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                     bias_regularizer=regularizers.L2(1e-6),
+                     kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                     bias_regularizer=regularizers.L2(1e-7),
                      activity_regularizer=regularizers.L2(1e-7))(relu_1)
     batchNorm_2 = BatchNormalization(axis=3)(conv_2)
     relu_2 = Activation('relu')(batchNorm_2)
@@ -402,8 +402,8 @@ def identity_block(input_layer,
                     kernel_size=(1,1), 
                     padding='same', 
                     kernel_initializer='he_normal',  
-                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                    bias_regularizer=regularizers.L2(1e-6),
+                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                    bias_regularizer=regularizers.L2(1e-7),
                     activity_regularizer=regularizers.L2(1e-7))(relu_2)
     batchNorm_3 = BatchNormalization(axis=3)(conv_3)
 
@@ -432,8 +432,8 @@ def convolutional_block(input_layer,
                     kernel_size=(1,1), 
                     padding='same', 
                     kernel_initializer='he_normal', 
-                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                    bias_regularizer=regularizers.L2(1e-6),
+                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                    bias_regularizer=regularizers.L2(1e-7),
                     activity_regularizer=regularizers.L2(1e-7))(input_layer)
     batchNorm_1 = BatchNormalization(axis=3)(conv_1)
     relu_1 = Activation('relu')(batchNorm_1)
@@ -444,8 +444,8 @@ def convolutional_block(input_layer,
                     strides=(stride,stride), 
                     padding='same', 
                     kernel_initializer='he_normal',  
-                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                    bias_regularizer=regularizers.L2(1e-6),
+                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                    bias_regularizer=regularizers.L2(1e-7),
                     activity_regularizer=regularizers.L2(1e-7))(relu_1)
     batchNorm_2 = BatchNormalization(axis=3)(conv_2)
     relu_2 = Activation('relu')(batchNorm_2)
@@ -454,8 +454,8 @@ def convolutional_block(input_layer,
     conv_3 = Conv2D(output_filters, 
                     kernel_size=(1,1), padding='same', 
                     kernel_initializer='he_normal',  
-                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                    bias_regularizer=regularizers.L2(1e-6),
+                    kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                    bias_regularizer=regularizers.L2(1e-7),
                     activity_regularizer=regularizers.L2(1e-7))(relu_2)
     batchNorm_3 = BatchNormalization(axis=3)(conv_3)
 
@@ -468,8 +468,8 @@ def convolutional_block(input_layer,
                                strides=(stride,stride), 
                                padding='same', 
                                kernel_initializer='he_normal',  
-                               kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-6),
-                               bias_regularizer=regularizers.L2(1e-6),
+                               kernel_regularizer=regularizers.L1L2(l1=1e-7, l2=1e-7),
+                               bias_regularizer=regularizers.L2(1e-7),
                                activity_regularizer=regularizers.L2(1e-7))(input_layer)
         input_layer_2 = BatchNormalization(axis=3)(input_layer_2)
     
@@ -624,7 +624,6 @@ class SaveModelRegularly(tf.keras.callbacks.Callback):
 # Function input arg 2: batch_size [int] --> The batch_size. 
 # Function input arg 3: new_model [bool] --> When True, trains a new model. When False, trains a previous model which you select.
 # Function input arg 4: display_plot [bool] --> When True, prints the plots of loss and accuracy. 
-@timing
 def train_ResNet(num_epochs, 
                  batch_size,
                  new_model = True, 
@@ -639,13 +638,13 @@ def train_ResNet(num_epochs,
     #### (2) Get the user to select the directory in question. 
     
     # Select the training directory.
-    training_dir = select_folder('Please select the training directory') 
+    directory = select_folder('Please select the training directory') 
     
     # Generate list of images names and corresponding distributions. 
     image_paths, distributions = get_names_and_distributions(directory)
     
     # Split the data into training and testing/validation data. 
-    x_train, x_test, y_train, y_test = train_test_split(image_paths,distributions, test_size=0.5)
+    x_train, x_test, y_train, y_test = train_test_split(image_paths,distributions, test_size=0.2)
     
     #### (3) Create or load in a model, as the user desires it. 
     
@@ -779,10 +778,10 @@ def use_resnet(image_ext = ['.tif', '.png']):
     acc_01 = custom_accuracy(0.1)
     acc_02 = custom_accuracy(0.2)
     acc_03 = custom_Accuracy(0.3)
-    model = load_model(model_path, custom_metrics{'KL_loss':KL_loss,
-                                                  'acc_01':acc_01,
-                                                  'acc_02':acc_02,
-                                                  'acc_03':acc_03})
+    model = load_model(model_path, custom_objects={'KL_loss':KL_loss,
+                                                   'acc_01':acc_01,
+                                                   'acc_02':acc_02,
+                                                   'acc_03':acc_03})
     
     #### (3) Get a lit of the image paths we need to consider. 
     directory = select_folder('Please select the folder of images you wish to process')

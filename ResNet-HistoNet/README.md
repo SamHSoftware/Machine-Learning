@@ -40,5 +40,38 @@ E-mail: samhuguet1@gmail.com
 
 (3) The images will be created within ```training-data```. Each image will contain 9 circles of different sizes. The distribution of circle volumes for each image is represented in a csv file within the same directory. The csv file is called ```area-data```. Each image has 1 row, where the first column isthe image path, and the proceeding columns are distribution values. 
 
-### (1) Preparing your data for training. 
+### How to train your model. 
 
+(1) Open ```RUNME_to_train_model.py```.
+
+(2) Consider the following code...
+
+```
+# Function to train the ResNet. 
+# Function input arg 1: num_epochs [int] --> The number of epochs to train the model for. 
+# Function input arg 2: batch_size [int] --> The batch_size. 
+# Function input arg 3: new_model [bool] --> When True, trains a new model. When False, trains a previous model which you select.
+# Function input arg 4: display_plot [bool] --> When True, prints the plots of loss and accuracy. 
+train_ResNet(num_epochs=10, 
+             batch_size=5,
+             new_model = True, 
+             display_plot=True)
+```
+
+... and edit the input args as needed. 
+
+(2) Run the code. This will create a GUI (the same as the one displayed above) asking you to select the folder of training data, namely ```training-data```, which we made earlier. The code will the train you ResNet. 
+
+(3) The code will output the trained model (saved every 5 epochs using a custom callback), the loss and accuracy data (asa .csv file) and the graphs of loss and accuracy for each epoch. The loss graph will look something like this: 
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png" alt="The loss graph" width="500"/>
+
+The accuracy isn't simple to calculate, because our data isn't categorical. Thus, a simple comfusion matrix isn't possible. Instead, I have made a custom accuracy function, which takes a parameter between 0 and 1. If the parameter, p, is 0.1, then the function will return ```1``` if each value of the predicted disttribution is within ```p``` of the corresponding ground truth value. Else, the function will return ```0```. With a batch, an average of these 1s and 0s can be calculated, to get a pseudo-accuracy value, which is a function of p. This is what the accuracy graph will look like, for multiple values of p:
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png" alt="The accuracy graph" width="500"/>
+
+(4) The outputs listed above will be saved with date-time tags to a new folder named prediction-data-YYYYMMDD_hhmmss (that's the data time string at the end). 
+
+## How to use the model to predict distributions. 
+
+(1) 
