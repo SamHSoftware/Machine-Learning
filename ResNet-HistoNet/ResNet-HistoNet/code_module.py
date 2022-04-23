@@ -271,7 +271,7 @@ def make_distribution_graph(distribution,
     bins = [10, 340, 1000, 1700, 2500, 50000]
     
     # Create the x data labels.
-    x = ('10<x<=340', '340<x<=1000', '1000<x<=1700', '1700<x<=2500', '2500<x')
+    x = ('10<x<=340', '340<4=1000', '1000<x<=1700', '1700<x<=2500', '2500<x')
     
     # Create the x data locations. 
     x_loc = [0, 1, 2, 3, 4]
@@ -286,6 +286,7 @@ def make_distribution_graph(distribution,
     # Create the graph.
     fig, axis_1 = plt.subplots()
     axis_1.bar(x, c_distribution, color = "green")
+    axis_1.bar(x, distribution, color = "black")
     axis_1.set_xlabel('Circle area (pixels)', fontsize = 15, labelpad=10)
     axis_1.set_ylabel('Proportion of circle\nareas', color='black', fontsize = 15, labelpad=10)
     axis_1.set_ylim([0, 1.1])
@@ -769,15 +770,15 @@ def train_ResNet(num_epochs,
 def use_resnet(image_ext = ['.tif', '.png']):
     
     #### (1) First, we establish variables which will be useful later on. 
-    now = datetime.datetime()
-    date_time = strftime("%Y%m%d_%H%M%S")
+    now = datetime.now()
+    date_time = now.strftime("%Y%m%d_%H%M%S")
 
     #### (2) Load in our model. 
     model_path = select_file('Please select the traing model .h5 file')
     KL_loss = tf.keras.losses.KLDivergence()
     acc_01 = custom_accuracy(0.1)
     acc_02 = custom_accuracy(0.2)
-    acc_03 = custom_Accuracy(0.3)
+    acc_03 = custom_accuracy(0.3)
     model = load_model(model_path, custom_objects={'KL_loss':KL_loss,
                                                    'acc_01':acc_01,
                                                    'acc_02':acc_02,

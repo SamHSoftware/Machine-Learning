@@ -64,14 +64,20 @@ train_ResNet(num_epochs=10,
 
 (3) The code will output the trained model (saved every 5 epochs using a custom callback), the loss and accuracy data (asa .csv file) and the graphs of loss and accuracy for each epoch. The loss graph will look something like this: 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png" alt="The loss graph" width="500"/>
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/ResNet-HistoNet/training-data/training-data-20220423_144006/loss_20220423_144006.png?raw=true" alt="The loss graph" width="500"/>
 
 The accuracy isn't simple to calculate, because our data isn't categorical. Thus, a simple comfusion matrix isn't possible. Instead, I have made a custom accuracy function, which takes a parameter between 0 and 1. If the parameter, p, is 0.1, then the function will return ```1``` if each value of the predicted disttribution is within ```p``` of the corresponding ground truth value. Else, the function will return ```0```. With a batch, an average of these 1s and 0s can be calculated, to get a pseudo-accuracy value, which is a function of p. This is what the accuracy graph will look like, for multiple values of p:
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png" alt="The accuracy graph" width="500"/>
+<img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/ResNet-HistoNet/training-data/training-data-20220423_144006/accuracy_20220423_144006.png?raw=true" alt="The accuracy graph" width="500"/>
+
+It looks like the model might be starting to overfit a little towards the end of the training, despite the regularization I added to the model. Thus, I've taken the trained from from epoch 20, as opposed to that of epoch 30. 
 
 (4) The outputs listed above will be saved with date-time tags to a new folder named prediction-data-YYYYMMDD_hhmmss (that's the data time string at the end). 
 
 ## How to use the model to predict distributions. 
 
-(1) 
+(1) Open and run ```RUNME_to_use_model.py```.
+
+(2) A series of GUIs will appear (similar to those above). Each will have a title asking you to either select the trained model you wish to use (an ```.h5``` file) or the directory of images that you wish to produce graphs for. 
+
+(3) A new directory will be created, called 
