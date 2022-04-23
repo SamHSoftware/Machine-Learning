@@ -289,6 +289,7 @@ def make_distribution_graph(distribution,
     axis_1.set_ylabel('Proportion of circle\nareas', color='black', fontsize = 15, labelpad=10)
     axis_2.set_ylabel('Cumulative proportion of\ncircle areas', color='green', fontsize = 15, labelpad=10)
     axis_1.set_ylim([0, 1.1])
+    axis_2.set_ylim([0, 1.1])
     axis_1.set_xticks(x_loc)
     axis_1.set_xticklabels(x, rotation=-45, ha='left', rotation_mode='anchor')
     
