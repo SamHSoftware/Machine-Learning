@@ -1,5 +1,3 @@
-# NB: This code is not yet complete.
-
 # README for project: ResNet-HistoNet
 
 ## Author details: 
@@ -16,6 +14,10 @@ E-mail: samhuguet1@gmail.com
     * This is where the main code is stored.
     * There are module files (these contain the individual functions) and RUNME files (these actually call (use) the functions).
     * There are .py files for general purpose IDEs, and .ipynb files for JupyterLab.
+- training-data: 
+    * This folder contains some example trainign data (with the corresponding csv file), an example training log and an example model prediction output. 
+- tests:
+    * The test file to assess functions within ```code_module.py```.
 - img:
     * This is where images are stored. These images are used to illustrate this README document.
 - LICENCE.txt:
@@ -85,3 +87,9 @@ It looks like the model might be starting to overfit a little towards the end of
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/ResNet-HistoNet/training-data/prediction-data-20220423_160404/circle_area_image_3.png?raw=true" alt="A distribution of circle areas within an image" width="500"/>
 
 The black bars represent the relative distribution, while the green bars represent the cumulative relative distribution. 
+
+## How to test the code. 
+
+(1) The test I have written isn't the be all and end all of tests. It presents as an exampel that you may wish to expand upon. Enter the ```tests``` directory, then open and run ```test_code_module.py```. 
+
+(2) If errors are detected, assertion errors will be raised. If not, a conformational startment of success will be printed. 
