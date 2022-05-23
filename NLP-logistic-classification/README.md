@@ -30,13 +30,17 @@ Date created: 19<sup>th</sup> May 2022
 - README.md:
     * The file which creates the README for this code.
 - environment.yml:
-    * A file to allow you to re-create this code's environment in conda.
+    * A file to allow you to re-create this code's environment in conda (if you're using it). 
 - requirements.txt:
     * A file to allow you to re-create this code's environment using pip.
 
 ## Here's how to unit test the package before using it: 
 
-(1) 
+(1) Open `RUNME_to_test_code_module.py`. 
+
+(2) Run the code; it will perform unit testing. The testing is within the file is a proof of concept, and shouldn't be viewed as an exhaustive list of tests. 
+
+(3) If there are errors, explanatory print statements will be created. If no errors are detected, a corresponding message will be printed. 
 
 ## How to train and evaluate the model. 
 
@@ -59,3 +63,5 @@ train_model()
 <img src="https://github.com/SamHSoftware/Machine-Learning/blob/main/NLP-logistic-classification/img/confusion_matrix.png?raw=true" alt="An example confusion matrix used for model evaluation." width="500"/> 
 
 The confusion matrix will be saved to a new directory, named `img`, within the `sentiment labelled sentences`. 
+
+As you can see, considering the simplicity of the model, it seems to be training relativly well. 
